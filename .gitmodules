@@ -1,6 +1,8 @@
 [submodule "trinket-back"]
 	path = trinket-back
 	url = https://github.com/trinket-gg/trinket-back.git
+	branch = main
 [submodule "trinket-front"]
 	path = trinket-front
 	url = https://github.com/trinket-gg/trinket-front.git
+	branch = main
