@@ -1,0 +1,32 @@
+version: "3.8"
+services: 
+  trinket-front:
+    container_name: trinket-front
+    image: node:slim
+    working_dir: "/app"
+    command: "npm run dev"
+    volumes:
+      - ./front:/app
+    ports: 
+      - "${PORT_FRONT}:3000"
+  trinket-back:
+    container_name: trinket-back
+    restart: always
+    image: node:slim
+    working_dir: "/app"
+    command: "npm run dev"
+    ports: 
+      - "${PORT_BACK}:4000"
+    volumes:
+      - ./back:/app
+    depends_on:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb:/data/db
+volumes:
+  mongodb:
